@@ -13,7 +13,6 @@ export class ProductTable extends React.Component<ProductTableProps> {
     let lastCategory = "";
 
     this.props.products.forEach((product, index) => {
-      console.log("indx ", index);
       if (product.name.indexOf(filterText) === -1) {
         return;
       }

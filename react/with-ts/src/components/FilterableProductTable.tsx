@@ -1,10 +1,34 @@
-import React from "react";
-import { FilterableProductTableProps, ProductCriteria } from "components/types";
+import { ProductTable } from "components/ProductTable";
 import { SearchBar } from "components/SearchBar";
-import {ProductTable} from "components/ProductTable";
+import { FilterableProductTableProps } from "components/types";
 import { View } from "components/View";
+import { memo, useState } from "react";
 
-export class FilterableProductTable extends React.Component<
+export const FilterableProductTable = memo(({
+  products,
+}: FilterableProductTableProps): React.ReactElement => {
+  const [filterText, setFilterText] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
+
+  console.log("render FilterableProductTable");
+  return (
+    <View>
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockChange={setInStockOnly}
+      />
+      <ProductTable
+        products={products}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
+    </View>
+  );
+});
+/*
+extends React.Component<
   FilterableProductTableProps,
   Required<ProductCriteria>
 > {
@@ -50,3 +74,4 @@ export class FilterableProductTable extends React.Component<
     );
   }
 }
+*/

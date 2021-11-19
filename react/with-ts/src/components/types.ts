@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export type Product = {
   category: string;
   price: string;
@@ -37,3 +39,7 @@ export type SearchBarProps = Required<ProductCriteria> & {
   onFilterTextChange: (filter: string) => void;
   onInStockChange: (checked: boolean) => void;
 };
+
+
+export type HandleChange = (e: FormEvent<HTMLInputElement>) => void;
+export type FormValue = string | boolean | string[];
